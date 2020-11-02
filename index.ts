@@ -1,5 +1,3 @@
-import { ContextReplacementPlugin } from "webpack"
-
 const w : number = window.innerWidth 
 const h : number = window.innerHeight 
 const strokeFactor : number = 90 
