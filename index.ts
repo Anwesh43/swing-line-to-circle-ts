@@ -2,7 +2,7 @@ const w : number = window.innerWidth
 const h : number = window.innerHeight 
 const strokeFactor : number = 90 
 const sizeFactor : number = 12.9
-const parts : number = 5
+const parts : number = 4
 const delay : number = 20 
 const backColor : string = "#BDBDBD"
 const scGap : number = 0.02 / parts 
@@ -55,10 +55,10 @@ class DrawingUtil {
             const lx : number = size * ScaleUtil.divideScale(sf, 1, parts)
             context.save()
             context.scale(1 - 2 * j, 1)
-            context.translate(w / 2 - r, -h / 2 + r)
-            context.rotate(ScaleUtil.divideScale(sf, 2, parts) * Math.PI / 4)
+            context.translate(size, -size)
+            context.rotate(ScaleUtil.divideScale(sf, 2, parts) * -1 * Math.PI / 4)
             DrawingUtil.drawLine(context, 0, 0, -lx, lx)
-            DrawingUtil.drawCircle(context, size, size, r * ScaleUtil.divideScale(sf, 0, parts))
+            DrawingUtil.drawCircle(context, -size, size, r * ScaleUtil.divideScale(sf, 0, parts))
             context.restore()
         }
         context.restore()
