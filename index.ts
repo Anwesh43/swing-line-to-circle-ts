@@ -213,3 +213,25 @@ class SwingLineToCircle {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    slc : SwingLineToCircle = new SwingLineToCircle()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.slc.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.slc.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.slc.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
